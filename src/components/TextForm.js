@@ -39,7 +39,7 @@ export default function TextForm(props) {
 
 
 
-        return text.length > 0 ? text.trim().split(" ").length : 0;
+        return text.length > 0 ? text.trim().split(/\s+/).length : 0;
     }
 
     const handleOnChange = (event) => {
@@ -54,16 +54,16 @@ export default function TextForm(props) {
     return (
         <>
             <div className="container" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
-                <h1>{props.heading}</h1>
+                <h1 className='mb-4'>{props.heading}</h1>
                 <div className="mb-3">
 
-                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }} id="myBox" rows="8"></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }} id="myBox" rows="8"></textarea>
                 </div>
 
-                <button className="btn btn-primary" onClick={handleupClick}>Covert to Uppercase</button>
-                <button className="btn btn-primary mx-2" onClick={handlelowClick}>Covert to Lowercase</button>
-                <button className="btn btn-primary mx-2" onClick={listenText}>Listen Text</button>
-                <button className="btn btn-danger mx-2" onClick={deleteText}>Delete</button>
+                <button disabled={text.length===0} className="btn btn-primary max-1 my-1" onClick={handleupClick}>Covert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handlelowClick}>Covert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={listenText}>Listen Text</button>
+                <button disabled={text.length===0} className="btn btn-danger mx-1 my-1" onClick={deleteText}>Delete</button>
             </div>
 
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
@@ -72,7 +72,7 @@ export default function TextForm(props) {
                 <p>{wordLength(text)} words, {text.length} characters</p>
                 <p>{0.008 * wordLength(text)} Minutes read </p>
                 <h2>Preview</h2>
-                <p>{text.length === 0 ? "Enter something to preview it here" : text}</p>
+                <p>{text.length === 0 ? "Nothing to preview" : text}</p>
             </div>
         </>
     )

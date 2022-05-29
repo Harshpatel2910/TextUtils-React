@@ -63,7 +63,7 @@ function App() {
         <Alert alert={alert} />
         <Routes>
           <Route path="/" element={<TextForm showAlert={showAlert} heading='Enter Text Here' mode={mode}></TextForm>} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About mode={mode} />} />
         </Routes>
       </BrowserRouter>
 
@@ -73,3 +73,5 @@ function App() {
 }
 
 export default App;
+
+
