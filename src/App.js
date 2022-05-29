@@ -7,11 +7,9 @@ import TextForm from './components/TextForm.js';
 
 import About from './components/About';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Routes,
-  Link,
-  useRoutes,
 } from 'react-router-dom';
 
 
@@ -53,27 +51,23 @@ function App() {
 
     }
   }
-  
+
 
   // router function
- 
+
   return (
     <>
 
-      <Router>
+      <BrowserRouter>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-
-        <Alert alert={alert}></Alert>
-        <div className="container my-3" >
-        <TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />
+        <Alert alert={alert} />
         <Routes>
-            <Route path="/about" element={<About />}>
-            </Route>
-            <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}>
-            </Route>
-          </Routes>
-        </div>
-      </Router>
+          <Route path="/" element={<TextForm showAlert={showAlert} heading='Enter Text Here' mode={mode}></TextForm>} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+
+
     </>
   );
 }
