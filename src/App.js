@@ -8,8 +8,6 @@ import TextForm from './components/TextForm.js';
 import About from './components/About';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   useRoutes,
 } from 'react-router-dom';
 
