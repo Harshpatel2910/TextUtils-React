@@ -8,6 +8,9 @@ import TextForm from './components/TextForm.js';
 import About from './components/About';
 import {
   BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
   useRoutes,
 } from 'react-router-dom';
 
@@ -29,7 +32,7 @@ function App() {
     setTimeout(() => {
 
       setAlert(null)
-    }, 1500);
+    }, 800);
   }
 
   const toggleMode = () => {
@@ -53,15 +56,7 @@ function App() {
   
 
   // router function
-  function AppRoutes() {
-    const routes = useRoutes(
-      [
-        {  path: '/', element: <TextForm showAlert={showAlert} heading="Enter the text to analyze:" mode={mode} /> },
-        { path: '/about', element: <About /> }
-      ]
-    )
-    return routes;
-  }
+ 
   return (
     <>
 
@@ -70,7 +65,13 @@ function App() {
 
         <Alert alert={alert}></Alert>
         <div className="container my-3" >
-          <AppRoutes />
+        <TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />
+        <Routes>
+            <Route path="/about" element={<About />}>
+            </Route>
+            <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}>
+            </Route>
+          </Routes>
         </div>
       </Router>
     </>
